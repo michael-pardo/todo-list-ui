@@ -1,6 +1,6 @@
 <template>
     <div class="add-container container">
-      <h2 class="center-align indigo-text">Agrega un nuevo modulo</h2>
+      <h2 class="center-align indigo-text">Agrega una tarea</h2>
       <form class="" @submit.prevent="addTodo()">
         <div class="field task">
           <label for="task">Tarea</label>
