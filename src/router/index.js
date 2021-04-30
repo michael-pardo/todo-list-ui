@@ -19,6 +19,9 @@ const router = new Router({
       path: '/add-todo',
       name: 'AddTodo',
       component: AddTodo,
+      meta: {
+        requiresAuth : true
+      }
     },
     {
       path: '/login',
@@ -31,7 +34,20 @@ const router = new Router({
 
 
 router.beforeEach((to, from, next) =>{
-  next()
+  let token  = localStorage.getItem("token");
+  if (to.matched.some(rec => rec.meta.requiresAuth)) {
+    if (token){
+      next()
+    } else {
+      next({name: 'Login'})
+    }
+  }else {
+    if (token){
+      next({name: 'Index'})
+    } else {
+      next()
+    }
+  }
 });
 
 

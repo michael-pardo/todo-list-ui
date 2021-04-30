@@ -4,13 +4,13 @@
       <div class="card-content center-align">
         <h2 class="center deep-purple--text">Login</h2>
         <div class="field">
-          <label for="email">Email</label>
+          <label for="email">Correo</label>
           <label>
             <input type="email" name="email" v-model="email">
           </label>
         </div>
         <div class="field">
-          <label for="password">Password</label>
+          <label for="password">Contraseña</label>
           <label>
             <input type="password" name="password" v-model="password">
           </label>
