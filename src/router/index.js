@@ -2,8 +2,8 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Index from '@/components/Index'
 import Login from "@/components/Login";
-import "materialize-css"
-import "materialize-css/dist/css/materialize.min.css"
+// import "materialize-css"
+// import "materialize-css/dist/css/materialize.min.css"
 import AddTodo from "@/components/AddTodo";
 import TodoList from "@/components/TodoList";
 import EditTodo from "@/components/EditTodo";
