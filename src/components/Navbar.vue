@@ -11,6 +11,9 @@
           <router-link :to="{ name: 'AddTodo'}">
             <i class="material-icons">add</i>
           </router-link>
+          <router-link :to="{ name: 'AddTodo'}">
+            <i class="material-icons">list</i>
+          </router-link>
         </a>
       </div>
     </nav>
@@ -29,8 +32,6 @@
 </script>
 
 <style scoped>
-  .navbar nav{
-    padding: 0 20px;
-  }
+
 
 </style>

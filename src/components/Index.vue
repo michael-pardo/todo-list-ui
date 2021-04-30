@@ -15,8 +15,8 @@
 </template>
 
 <script>
-import Repository from "../repositories/RepositoryFactory";
-const IndexRepository = Repository.get("index");
+import IndexRepository from "@/repositories/IndexRepository";
+const indexRepository = IndexRepository;
 export default {
   name: 'Index',
   props: {
@@ -27,7 +27,7 @@ export default {
   },
   methods:{
     getIndex: async function(){
-      const { data } = await IndexRepository.get()
+      const { data } = await indexRepository.get()
       console.log('lolol ',data);
     }
   }
@@ -37,9 +37,9 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 header{
-  height: 60em;
+  height: 80em;
   background: url("https://picsum.photos/id/1033/1600/900");
-  background-size: cover;
+
   position: relative;
 }
 header::before{
@@ -57,7 +57,7 @@ p {
   max-width: 35em;
 }
 
-@media screen and (max-width: 600px){
+@media screen and (max-width: 1200px){
   header{
     height: 30em;
   }

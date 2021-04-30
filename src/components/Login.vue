@@ -25,8 +25,9 @@
 </template>
 
 <script>
-import Repository from "../repositories/RepositoryFactory";
-const SessionRepository = Repository.get("session");
+
+import SessionRepository from "../repositories/SessionRepository";
+const sessionRepository = SessionRepository;
     export default {
         name: "Login",
       data(){
@@ -41,7 +42,7 @@ const SessionRepository = Repository.get("session");
       methods:{
           login: async function(){
             if (this.email && this.password){
-              const {data} = await SessionRepository.login(this.email, this.password)
+              const {data} = await sessionRepository.login(this.email, this.password)
               console.log(data)
               this.feedback="";
             } else {

@@ -5,6 +5,8 @@ import Login from "@/components/Login";
 import "materialize-css"
 import "materialize-css/dist/css/materialize.min.css"
 import AddTodo from "@/components/AddTodo";
+import TodoList from "@/components/TodoList";
+import EditTodo from "@/components/EditTodo";
 
 Vue.use(Router);
 
@@ -24,10 +26,24 @@ const router = new Router({
       }
     },
     {
+      path: '/list',
+      name: 'TodoList',
+      component: TodoList
+    },
+    {
+      path: '/edit/:todo_id',
+      name: 'EditTodo',
+      component: EditTodo
+    },
+    {
       path: '/login',
       name: 'Login',
       component: Login
     },
+    {
+      path :'*',
+      component:Index
+    }
 
   ]
 });
