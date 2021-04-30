@@ -1,8 +1,8 @@
 <template>
   <div class="login container">
-    <form @submit.prevent="login" class="card-panel">
+    <form @submit.prevent="register" class="card-panel">
       <div class="card-content center-align">
-        <h2 class="center deep-purple--text">Login</h2>
+        <h2 class="center deep-purple--text">Registro</h2>
         <div class="field">
           <label for="email">Correo</label>
           <label>
@@ -17,12 +17,7 @@
         </div>
         <p v-if="feedback">{{feedback}}</p>
         <div class="field">
-          <button class="btn deep-purple">Ingresar</button>
-        </div>
-        <div class="field">
-          <router-link :to="{name: 'Register'}">
-            <a class="">Registrarme</a>
-          </router-link>
+          <button class="btn deep-purple">Registrar</button>
         </div>
       </div>
     </form>
@@ -34,7 +29,7 @@
 import SessionRepository from "../repositories/SessionRepository";
 const sessionRepository = SessionRepository;
     export default {
-        name: "Login",
+        name: "Register",
       data(){
           return{
             email: null,
@@ -45,7 +40,7 @@ const sessionRepository = SessionRepository;
       created(){
       },
       methods:{
-          login: async function(){
+          register: async function(){
             if (this.email && this.password){
               const {data} = await sessionRepository.login(this.email, this.password)
               console.log(data)

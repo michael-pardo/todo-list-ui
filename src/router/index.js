@@ -7,6 +7,7 @@ import Login from "@/components/Login";
 import AddTodo from "@/components/AddTodo";
 import TodoList from "@/components/TodoList";
 import EditTodo from "@/components/EditTodo";
+import Register from "@/components/Register";
 
 Vue.use(Router);
 
@@ -39,6 +40,11 @@ const router = new Router({
       path: '/login',
       name: 'Login',
       component: Login
+    },
+    {
+      path: '/register',
+      name: 'Register',
+      component: Register
     },
     {
       path :'*',
