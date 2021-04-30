@@ -14,7 +14,7 @@ export default {
   router,
   components: {
     Navbar
-  }
+  },
 }
 </script>
 

@@ -25,6 +25,8 @@
 </template>
 
 <script>
+import Repository from "../repositories/RepositoryFactory";
+const SessionRepository = Repository.get("session");
     export default {
         name: "Login",
       data(){
@@ -37,9 +39,10 @@
       created(){
       },
       methods:{
-          login(){
+          login: async function(){
             if (this.email && this.password){
-
+              const {data} = await SessionRepository.login(this.email, this.password)
+              console.log(data)
               this.feedback="";
             } else {
               this.feedback = "Ingresa usuario y contraseña"

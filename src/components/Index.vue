@@ -15,10 +15,21 @@
 </template>
 
 <script>
+import Repository from "../repositories/RepositoryFactory";
+const IndexRepository = Repository.get("index");
 export default {
   name: 'Index',
   props: {
     msg: String
+  },
+  created() {
+    this.getIndex()
+  },
+  methods:{
+    getIndex: async function(){
+      const { data } = await IndexRepository.get()
+      console.log('lolol ',data);
+    }
   }
 }
 </script>
