@@ -19,6 +19,8 @@
 </template>
 
 <script>
+import TodoRepository from "@/repositories/TodoRepository";
+const repository = TodoRepository;
     export default {
         name: "EditTodo",
       data(){
@@ -28,7 +30,12 @@
           }
       },
       created() {
-        console.log(this.$route.params.todo_id)
+        const {data} = repository.getTodo(this.$route.params.todo_id)
+        if (data.detail){
+          this.$router.push({name:'TodoList'});
+        }else {
+          this.tasks = data
+        }
       },
       methods: {
         editTask(){

@@ -24,13 +24,15 @@
 
 <script>
   import slugify from 'slugify'
+  import TodoRepository from "@/repositories/TodoRepository";
+
+  const repository = TodoRepository;
     export default {
         name: "AddTodo",
       data() {
           return {
             task: null,
             description: null,
-            ingredients: [],
             feedback: null,
             slug: null,
           }
@@ -45,6 +47,13 @@
               remove: /[$*_+.()'"!-:@]/g,
               lower: true,
             });
+            const {data} = repository.add(this.task, this.description)
+            if (data.detail){
+              localStorage.removeItem("token")
+              this.$router.push({name:'Index'});
+            }else {
+              this.$router.push({name:'TodoList'});
+            }
 
           } else {
             this.feedback = "Deberías ingresar una tarea"

@@ -44,7 +44,7 @@ const sessionRepository = SessionRepository;
             if (this.email && this.password){
               const {data} = await sessionRepository.register(this.email, this.password)
               console.log(data)
-              this.feedback="";
+              this.feedback="Implementando";
             } else {
               this.feedback = "Ingresa usuario y contraseña"
             }

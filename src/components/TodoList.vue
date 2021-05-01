@@ -6,12 +6,15 @@
           <div class="card-content">
             <i class="material-icons delete" @click="deleteTask(task.id)">delete</i>
             <h2 class="indigo-text">
-              {{task.title}}
+              {{task.name}}
             </h2>
             <ul class="tasks">
                 <div class="module">
-                  &nbsp; {{ task.id }} &nbsp;
+                  &nbsp; {{ task.description }} &nbsp;
                 </div>
+              <div class="module">
+                &nbsp; {{ task.status }} &nbsp;
+              </div>
             </ul>
           </div>
           <span class="btn-floating btn-large halfway-fab pink">
@@ -44,7 +47,13 @@ name: "TodoList",
     },
     getTodos: async function(){
       const { data } = await repository.get();
-      this.tasks = data
+      if (data.detail){
+        localStorage.removeItem("token")
+        this.$router.push({name:'Index'});
+      }else {
+        this.tasks = data
+      }
+
     }
   },
   created() {
