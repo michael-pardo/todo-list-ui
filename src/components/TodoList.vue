@@ -39,15 +39,16 @@ name: "TodoList",
   },
   methods: {
     deleteTask(id){
-      console.log(id)
+      repository.delete(id)
+      this.getTodos()
     },
-    get: async function(){
+    getTodos: async function(){
       const { data } = await repository.get();
       this.tasks = data
     }
   },
   created() {
-    this.get()
+    this.getTodos()
   }
 }
 </script>

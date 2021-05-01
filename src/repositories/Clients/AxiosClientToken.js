@@ -6,5 +6,8 @@ const baseURL = `${baseDomain}`; // Incase of /api/v1;
 // ALL DEFUALT CONFIGURATION HERE
 
 export default axios.create({
-  baseURL
+  baseURL,
+  headers: {
+    "Authorization": `Bearer ${localStorage.getItem("token")}`
+  }
 });
