@@ -5,8 +5,10 @@ const resourceRegister = '/register';
 export default {
     login(email, password){
         const payload =  {
-            email: email,
-            password: password
+            grant_type: 'password',
+            username: email,
+            password: password,
+            client_id: '1Mju5tT35+1nG'
         }
         return Client.post(`${resource}`,payload)
     },

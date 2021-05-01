@@ -1,8 +1,12 @@
 import Client from './Clients/AxiosClient';
-const resource = '/posts/1';
+const resource = '/api/tasks/count';
+const resourceUsers = '/api/users/count';
 
 export default {
-    get(){
+    getTodosCount(){
         return Client.get(`${resource}`)
+    },
+    getUsersCount(){
+        return Client.get(`${resourceUsers}`)
     }
 }
