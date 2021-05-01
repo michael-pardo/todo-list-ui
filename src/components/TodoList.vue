@@ -12,7 +12,7 @@
                 <div class="module">
                   &nbsp; {{ task.description }} &nbsp;
                 </div>
-              <div class="module">
+              <div class="indigo-text">
                 &nbsp; {{ task.status }} &nbsp;
               </div>
             </ul>
@@ -46,13 +46,15 @@ name: "TodoList",
       this.getTodos()
     },
     getTodos: async function(){
-      const { data } = await repository.get();
-      if (data.detail){
+      repository.get().then(response => {
+        //action
+        console.log(response)
+        this.tasks = response.data
+      }).catch(() => {
+        alert('Inicia sesión')
         localStorage.removeItem("token")
         this.$router.push({name:'Index'});
-      }else {
-        this.tasks = data
-      }
+          });
 
     }
   },

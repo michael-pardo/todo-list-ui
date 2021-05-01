@@ -4,9 +4,9 @@
       <div class="card-content center-align">
         <h2 class="center deep-purple--text">Login</h2>
         <div class="field">
-          <label for="email">Usuario</label>
+          <label for="text">Usuario</label>
           <label>
-            <input type="email" name="email" v-model="email">
+            <input type="text" name="text" v-model="email">
           </label>
         </div>
         <div class="field">
@@ -47,12 +47,14 @@ const sessionRepository = SessionRepository;
       methods:{
           login: async function(){
             if (this.email && this.password){
-              const {data} = await sessionRepository.login(this.email, this.password)
-              if (data.error){
+              sessionRepository.login(this.email, this.password)
+                  .then(response => {
+                    //action
+                    localStorage.setItem("token", response.data.access_token)
+                    this.$router.push({name:'TodoList'});
+                  }).catch(() => {
                 this.feedback="Revisa el usuario y la contraseña";
-              }else {
-                this.$router.push({name:'TodoList'});
-              }
+              });
               this.feedback="";
             } else {
               this.feedback = "Ingresa usuario y contraseña"

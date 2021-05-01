@@ -65,11 +65,8 @@ router.beforeEach((to, from, next) =>{
       next({name: 'Login'})
     }
   }else {
-    if (token){
-      next({name: 'Index'})
-    } else {
       next()
-    }
+
   }
 });
 

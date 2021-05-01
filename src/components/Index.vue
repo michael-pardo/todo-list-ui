@@ -42,13 +42,17 @@ export default {
   },
   created() {
     this.getIndex()
+    this.getTodos()
   },
   methods:{
     getIndex: async function(){
       const { data } = await indexRepository.getUsersCount()
       this.usersCount = data.count
-      const { tasks } = await indexRepository.getTodosCount()
-      this.tasksCount = tasks.count
+
+    },
+    getTodos: async function(){
+      const { data } = await indexRepository.getTodosCount()
+      this.tasksCount = data.count
     }
   }
 }

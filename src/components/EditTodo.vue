@@ -1,10 +1,10 @@
 <template>
   <div v-if="task" class="edit-todo container">
-    <h2>Edita el modulo de {{task.title}}</h2>
+    <h2>Edita el Todo de {{task.name}}</h2>
     <form class="" @submit.prevent="editTask()">
       <div class="field title">
-        <label for="title">Rama</label>
-        <input type="text" name="title" v-model="task.title">
+        <label for="title">Tarea</label>
+        <input type="text" name="title" v-model="task.name">
       </div>
       <div>
         <label for="todo">Descripción:</label>
@@ -30,18 +30,29 @@ const repository = TodoRepository;
           }
       },
       created() {
-        const {data} = repository.getTodo(this.$route.params.todo_id)
-        if (data.detail){
-          this.$router.push({name:'TodoList'});
-        }else {
-          this.tasks = data
-        }
+
+        console.log(this.$route.params.todo_id)
+        repository.getTodo(this.$route.params.todo_id)
+            .then(response => {
+              //action
+              console.log(response)
+              this.task = response.data
+            }).catch(() => {
+              this.$router.push({name:'TodoList'});
+            });
+
       },
       methods: {
         editTask(){
-          if (this.task.title){
+          if (this.task.name){
             this.feedback = null;
-            //create a slug
+            repository.edit(this.task).then(response => {
+              //action
+              alert(`${response.data.name} actualizado`)
+              this.$router.push({name:'TodoList'});
+            }).catch(() => {
+              this.$router.push({name:'TodoList'});
+            });
 
           } else {
             this.feedback = "Deberías ingresar alguna tarea"
