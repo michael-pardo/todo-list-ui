@@ -47,13 +47,16 @@
               remove: /[$*_+.()'"!-:@]/g,
               lower: true,
             });
-            const {data} = repository.add(this.task, this.description)
-            if (data.detail){
-              localStorage.removeItem("token")
-              this.$router.push({name:'Index'});
-            }else {
-              this.$router.push({name:'TodoList'});
-            }
+            repository.add(this.task, this.description)
+                .then(response => {
+                  //action
+                  alert(`${response.data.name} agregado`)
+                  this.$router.push({name:'TodoList'});
+                }).catch(() => {
+                  localStorage.removeItem("token")
+                  this.$router.push({name:'Index'});
+                });
+
 
           } else {
             this.feedback = "Deberías ingresar una tarea"

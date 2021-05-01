@@ -6,10 +6,10 @@ export default {
         return Client.get(`${resource}`)
     },
     getTodo(id){
-        return Client.get(`${resource}/${id}`)
+        return Client.get(`${resource}${id}`)
     },
     edit(todo){
-        return Client.put(`${resource}/${todo.id}/`,todo)
+        return Client.put(`${resource}${todo.id}/`,todo)
     },
     delete(id){
         return Client.delete(`${resource}/${id}`)
